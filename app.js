@@ -1,6 +1,6 @@
 var http = require('http'),
     router = require('./router'),
-    url = require('url');
+    url = require('url')
 
 var server = http.createServer(function (req, res) {
   if (req.url === '/favicon.ico') {
@@ -8,17 +8,12 @@ var server = http.createServer(function (req, res) {
     res.end()
     return
   }
-var path = url.parse(req.url).pathname
-var currentRoute = router.match(path)
-if (currentRoute) {
+  var path = url.parse(req.url).pathname
+  var currentRoute = router.match(path)
   currentRoute.fn(req, res, currentRoute)
-} else {
-  res.writeHead(404, {'Content-Type': 'text/html'})
-  res.end('404')
-  }
 })
 
 server.listen(6060, function (err) {
-  if (err) console.log('Oops, there is an error' ,err)
-  console.log('Yay! A server is running on port 6060');
+  if (err) console.log('Doah', err)
+  console.log('Woot. A server is running on port 6060')
 })

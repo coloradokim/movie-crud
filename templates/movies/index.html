@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Song Collection</title>
+  <link rel="stylesheet" href="/public/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'><body>
+<body>
+  <h1>Kim's Movie Reviews</h1>
+  {{#movies}}
+  <h2>{{title}}</h2>
+  <h2>{{director}}</h2>
+  <h2>{{year}}</h2>
+  <h2>{{myRating}}</h2>
+  <form action="/songs/{{_id}}/delete" method="post">
+    <input type="submit" value="Delete">
+  </form>
+  {{/movies}}
+</body>
+</html>
