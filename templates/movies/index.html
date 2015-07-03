@@ -4,17 +4,30 @@
   <meta charset="UTF-8">
   <title>All Movies</title>
   <link rel="stylesheet" href="/public/style.css">
-  <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'><body>
-<body>
+  <link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'><body>
   <h1>All Movies</h1>
-  {{#movies}}
-  <a href="/movies/{{_id}}"><h2>{{title}}</h2></a>
-  <h2>Director {{director}}</h2>
-  <h2>Year {{year}}</h2>
-  <h2>Rating {{myRating}}</h2>
-  <form action="/movies/{{_id}}/delete" method="post">
-    <input type="submit" value="Delete">
-  </form>
+  <table>
+    <tr>
+      <td>Title</td>
+      <td>Director</td>
+      <td>Year</td>
+      <td>Rating</td>
+      <td></td>
+      <td></td>
+          </tr>
+          <tr>
+      {{#movies}}
+      <td>{{title}}</td>
+      <td>{{director}}</td>
+      <td>Year</td>
+      <td>{{year}}</td>
+      <td>{{myRating}}</td>
+      <td><form action="/movies/{{_id}}/delete" method="post">
+        <input type="submit" value="Delete">
+      </form></td>
+      <td>Edit</td>
+          </tr>
+  </table>
   {{/movies}}
 </body>
 </html>
