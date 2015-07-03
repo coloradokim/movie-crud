@@ -21,7 +21,7 @@ routes.addRoute('/movies/new', function (req, res, url) {
     })
     req.on('end', function() {
       var movie = qs.parse(data)
-      movie.insert(movie, function (err, doc) {
+      movies.insert(movie, function (err, doc) {
         if (err) throw err
         res.writeHead(302, {'Location': '/movies'})
         res.end()
@@ -84,18 +84,6 @@ routes.addRoute('/movies/:id/update', function(req, res, url) {
   }
 })
 
-// routes.addRoute('/public/*', function (req, res, url) {
-//   res.setHeader('Content-Type', mime.lookup(req.url))
-//   fs.readFile('.' + req.url, function (err, file) {
-//     if (err) {
-//       res.setHeader('Content-Type', 'text/html')
-//       res.end('404')
-//     }
-//     res.end(file)
-//   })
-// })
-
-//  DESTROY
 routes.addRoute('/public/*', function (req, res, url) {
   res.setHeader('Content-Type', mime.lookup(req.url))
   fs.readFile('.' + req.url, function (err, file) {
@@ -106,12 +94,12 @@ routes.addRoute('/public/*', function (req, res, url) {
     res.end(file)
   })
 })
-// DESTROY -> deletes a song from the collection
-routes.addRoute('/songs/:id/delete', function(req, res, url) {
+// DESTROY
+routes.addRoute('/movies/:id/delete', function(req, res, url) {
   if (req.method === 'POST') {
-    songs.remove({_id: url.params.id}, function (err, doc) {
+    movies.remove({_id: url.params.id}, function (err, doc) {
       if (err) throw err
-      res.writeHead(302, {'Location': '/songs'})
+      res.writeHead(302, {'Location': '/movies'})
       res.end()
     })
   }

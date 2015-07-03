@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Song Collection</title>
+  <title>All Movies</title>
   <link rel="stylesheet" href="/public/style.css">
   <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'><body>
 <body>
-  <h1>Kim's Movie Reviews</h1>
+  <h1>All Movies</h1>
   {{#movies}}
-  <h2>{{title}}</h2>
-  <h2>{{director}}</h2>
-  <h2>{{year}}</h2>
-  <h2>{{myRating}}</h2>
-  <form action="/songs/{{_id}}/delete" method="post">
+  <a href="/movies/{{_id}}"><h2>{{title}}</h2></a>
+  <h2>Director {{director}}</h2>
+  <h2>Year {{year}}</h2>
+  <h2>Rating {{myRating}}</h2>
+  <form action="/movies/{{_id}}/delete" method="post">
     <input type="submit" value="Delete">
   </form>
   {{/movies}}

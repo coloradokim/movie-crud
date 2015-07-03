@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Add New Song</title>
+  <title>Add Movie!</title>
   <link rel="stylesheet" href="/public/style.css">
-  <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'><body>
 
 </head>
 <body>
-  <form action="/songs/new" method ="post">
-    <label for="name">Add a New Review</label>
-    <input id = "name" type="text" name="songTitle" value = ''>
-    <input type="submit" value="Add a Movie">
+  <form action="/movies/new" method ="post">
+    <label for="name"><h1>Add a Movie</h1></label>
+    <h3>Title</h3><input id= "title" type="text" name="title" value = ''>
+    <h3>Director</h3><input id= "director" type="text" name="director" value = ''>
+    <h3>Year</h3><input id= "year" type="text" name="year" value = ''>
+    <h3>Rating</h3><input id= "rating" type="number" name="rating" value = ''>
+    <h3>URL</h3><input id= "url" type="text" name="url" value = ''>
+
+    <input type="submit" value="Add Movie">
   </form>
 
 </body>

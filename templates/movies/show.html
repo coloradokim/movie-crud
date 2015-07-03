@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
+  <title>Show</title>
+  <link rel="stylesheet" href="/public/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
+  <body>
+  {{#movies}}
+  <h4>Title: </h4>{{title}}
+  <h4>Director: </h4>{{director}}
+  <h4>Year: </h4>{{year}}
+  <h4>My Rating: </h4>{{rating}}
+  {{/movies}}
 
 </body>
 </html>
