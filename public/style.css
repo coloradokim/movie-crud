@@ -7,8 +7,8 @@ body {
   background-color: lightblue;
 }
 
-.home {
-  background-image: url(../../images/amadeus.jpg)
+body.landing {
+  background-image: url(../../images/amadeus.jpg);
 }
 
 nav {
@@ -24,12 +24,13 @@ th, td {
   padding: 2%
 }
 
-
 td {
-  display: table-cell;
-  vertical-align: inherit;
   text-align: center;
   border-top: 1.5px solid black;
+}
+
+.newTable td, .editTable td {
+  border-top: 1.5px
 }
 
 .button {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Show</title>
+  <title>Edit</title>
   <link rel="stylesheet" href="/public/style.css">
   <link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'>  <body>
 </head>
@@ -44,8 +44,13 @@
            <label for="rating">My Rating</label>
          </th>
          <td>
-           <input id= "rating" type="text" name="rating" value ="{{rating}}">
-         </td>
+           <select id = "rating" name ="rating" value ="{{myRating}}">
+             <option value = "1">1</option>
+             <option value = "2">2</option>
+             <option value = "3">3</option>
+             <option value = "4">4</option>
+             <option value = "4">5</option>
+           </select>
       </tr>
       <tr>
         <th>

@@ -7,22 +7,59 @@
   <link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'>
 </head>
 <body class = "new">
-  <form action="/movies/new" method ="post">
-    <label for="name"><h1>Add a Movie</h1></label>
-    <h3>Title</h3><input id= "title" type="text" name="title" value = ''>
-    <h3>Director</h3><input id= "director" type="text" name="director" value = ''>
-    <h3>Year</h3><input id= "year" type="text" name="year" value = ''>
-    <label><h3>Rating</h3></label>
-            <select id = "rating" name ="rating" value ="{{myRating}}">
-              <option value = "1">1</option>
-              <option value = "2">2</option>
-              <option value = "3">3</option>
-              <option value = "4">4</option>
-              <option value = "4">5</option>
-            </select>
-    <h3>URL</h3><input id= "url" type="text" name="url" value = ''>
-    <input type="submit" value="Add Movie">
-  </form>
-
+  <h2>Add a Movie!</h2>
+  <section>
+    <form action="/movies/new" method ="post">
+      <table class ="newTable">
+        <tr>
+          <th>
+            <label for="title">Title</label>
+          </th>
+        <td>
+          <input id= "title" type="text" name="title" value = ''>
+        </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="director">Director</label>
+          </th>
+        <td>
+          <input id= "director" type="text" name="director" value = ''>
+        </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="year">Year</label>
+          </th>
+        <td>
+          <input id= "year" type="text" name="year" value = ''>
+        </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="rating">My Rating</label>
+          </th>
+        <td>
+          <select id = "rating" name ="rating" value ="{{myRating}}">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "4">5</option>
+          </select>
+        </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="url">URL</label>
+          </th>
+        <td>
+          <input id= "url" type="text" name="url" value = ''>
+        </td>
+        </tr>
+    </table>
+      <input class = "button" type="submit" value="Add Movie">
+    </form>
+  </section>
 </body>
 </html>
