@@ -9,13 +9,56 @@
   <body class ="show">
     <section>
   {{#movies}}
-      <h2>{{title}}</h2>
-      <img src="{{url}}" alt={{title}}>
-      <h4>Title: {{title}}</h4>
-      <h4>Director: {{director}}</h4>
-      <h4>Year: {{year}}</h4>
-      <h4>My Rating: {{rating}}</h4>
-      <a href="/movies/{{_id}}/edit"><button class="button">Edit</button></a>
+  <body>
+    <section>
+    <h2>Edit {{title}}</h2>
+    <img src="{{url}}" alt={{title}} height="400">
+      <form action="/movies/{{_id}}/update" method="post">
+        <table class= "editTable">
+          <tr>
+            <th>
+              <label for="title">Title</label>
+            </th>
+            <td>
+              <input id= "title" type="text" name="title" value ="{{title}}">
+            </td>
+         </tr>
+         <tr>
+           <th>
+             <label for="director">Director</label>
+           </th>
+           <td>
+             <input id= "director" type="text" name="director" value ="{{director}}">
+           </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="year">Year</label>
+          </th>
+          <td>
+            <input id= "year" type="text" name="year" value ="{{year}}">
+          </td>
+       </tr>
+       <tr>
+         <th>
+           <label for="rating">My Rating</label>
+         </th>
+         <td>
+           <input id= "rating" type="text" name="rating" value ="{{rating}}">
+         </td>
+      </tr>
+      <tr>
+        <th>
+          <label for="url">URL</label>
+        </th>
+        <td>
+          <input id= "url" type="text" name="url" value ="{{url}}">
+        </td>
+     </tr>
+  </table>
+  <a href="/movies/{{_id}}/edit"><button class="button">Update</button></a>
+  </form>
+</body>
       <a href="/movies"><button class="button">Go To All Movies</button></a>
   {{/movies}}
    </section>

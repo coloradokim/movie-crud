@@ -8,7 +8,7 @@ body {
 }
 
 .home {
-  background-image: url(/images/amadeus.jpg);
+  background-image: url(../../images/amadeus.jpg)
 }
 
 nav {

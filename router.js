@@ -31,11 +31,11 @@ routes.addRoute('/movies/new', function (req, res, url) {
 })
 
 //  READ
-routes.addRoute('/movies/home', function (req, res, url) {
+routes.addRoute('/', function (req, res, url) {
   if (req.method === 'GET') {
     res.setHeader('Content-Type', 'text/html')
     movies.find({}, function (err, docs) {
-      var file = fs.readFileSync('templates/movies/home.html')
+      var file = fs.readFileSync('templates/movies/landing.html')
       var template = view.render(file.toString(), {movies: docs})
       res.end(template)
     })
@@ -84,8 +84,8 @@ routes.addRoute('/movies/:id/update', function(req, res, url) {
     data += chunk
   })
   req.on('end', function () {
-    var band = qs.parse(data)
-    movies.update({_id: url.params.id}, band, function(err,doc) {
+    var movie = qs.parse(data)
+    movies.update({_id: url.params.id}, movie, function(err, movie) {
       if (err) throw err
       res.writeHead(302, {'Location': '/movies'})
       res.end()
