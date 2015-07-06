@@ -68,10 +68,10 @@ routes.addRoute('/movies/:id', function (req, res, url) {
 routes.addRoute('/movies/:id/edit', function (req, res, url) {
   if (req.method === 'GET') {
     res.setHeader('Content-Type', 'text/html')
-    movies.findOne({_id: url.params.id}, function(err, doc){
+    movies.findOne({_id: url.params.id}, function(err, movie){
       if (err) throw err
         var file = fs.readFileSync('templates/movies/edit.html')
-        var template = view.render('movies/edit', doc)
+        var template = view.render(file.toString(), {movies: movie})
         res.end(template)
     })
   }

@@ -5,19 +5,18 @@
   <title>Show</title>
   <link rel="stylesheet" href="/public/style.css">
   <link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'>  <body>
+</head>
+  <body class ="edit">
     <section>
   {{#movies}}
-      <h2>{{title}}</h2>
-      <img src="{{url}}" alt={{title}}>
-      <h3>Title: {{title}}</h3>
-      <h3>Director: {{director}}</h3>
-      <h3>Year: {{year}}</h3>
-      <h3>My Rating: {{rating}}</h3>
-      <br>
-      <a href="/movies/{{_id}}/edit"><button class="button left">Edit</button></a>
-      <a href="/movies"><button class="button">Go To All Movies</button></a>
+    <h2>{{title}}</h2>
+    <img src="{{url}}" alt={{title}}>
+      <h4>Title: {{title}}</h4>
+      <h4>Director: {{director}}</h4>
+      <h4>Year: {{year}}</h4>
+      <h4>My Rating: {{rating}}</h4>
+    <a href ="/movies/{{_id}}/edit"><button class="button">Edit {{title}}</button></a>
   {{/movies}}
-   </section>
-
+  <section>
 </body>
 </html>
