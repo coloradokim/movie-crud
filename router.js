@@ -1,118 +1,17 @@
 var routes = require('routes') (),
-    fs = require('fs'),
-    db = require('monk') ('localhost/movieRatings'),
-    movies = db.get('movieRatings'),
-    qs = require('qs'),
-    view = require('mustache'),
-    mime = require('mime');
+    movieRoutes = require('./routes/movie'),
+    siteRoutes = require('./routes/site');
 
-//  CREATE
-routes.addRoute('/movies/new', function (req, res, url) {
-  if (req.method === 'GET') {
-  res.setHeader('Content-Type', 'text/html')
-    var file = fs.readFileSync('templates/movies/new.html')
-    var template = view.render(file.toString(), {})
-    res.end(template)
-  }
-  if (req.method === 'POST') {
-    var data = ''
-    req.on('data', function (chunk) {
-      data += chunk
-    })
-    req.on('end', function() {
-      var movie = qs.parse(data)
-      movies.insert(movie, function (err, doc) {
-        if (err) throw err
-        res.writeHead(302, {'Location': '/movies'})
-        res.end()
-      })
-    })
-  }
-})
+//  movieRoutes
+routes.addRoute('/movies/new', movieRoutes.new)
+routes.addRoute('/movies', movieRoutes.index)
+routes.addRoute('/movies/:id', movieRoutes.show)
+routes.addRoute('/movies/:id/edit', movieRoutes.edit)
+routes.addRoute('/movies/:id/update', movieRoutes.update)
+routes.addRoute('/movies/:id/delete', movieRoutes.destroy)
 
-//  READ
-routes.addRoute('/', function (req, res, url) {
-  if (req.method === 'GET') {
-    res.setHeader('Content-Type', 'text/html')
-    movies.find({}, function (err, docs) {
-      var file = fs.readFileSync('templates/movies/landing.html')
-      var template = view.render(file.toString(), {movies: docs})
-      res.end(template)
-    })
-  }
-})
-routes.addRoute('/movies', function (req, res, url) {
-  if (req.method === 'GET') {
-    res.setHeader('Content-Type', 'text/html')
-    movies.find({}, function (err, docs) {
-      var file = fs.readFileSync('templates/movies/index.html')
-      var template = view.render(file.toString(), {movies: docs})
-      res.end(template)
-    })
-  }
-})
-
-routes.addRoute('/movies/:id', function (req, res, url) {
-  if (req.method === 'GET') {
-    res.setHeader('Content-Type', 'text/html')
-    movies.findOne({_id: url.params.id}, function (err, movie) {
-      var file = fs.readFileSync('templates/movies/show.html')
-      var template = view.render(file.toString(), {movies: movie})
-      if (err) throw err
-      res.end(template)
-    })
-  }
-})
-
-//  UPDATE
-routes.addRoute('/movies/:id/edit', function (req, res, url) {
-  if (req.method === 'GET') {
-    res.setHeader('Content-Type', 'text/html')
-    movies.findOne({_id: url.params.id}, function(err, movie){
-      if (err) throw err
-        var file = fs.readFileSync('templates/movies/edit.html')
-        var template = view.render(file.toString(), {movies: movie})
-        res.end(template)
-    })
-  }
-})
-
-routes.addRoute('/movies/:id/update', function(req, res, url) {
-  if (req.method === 'POST') {
-  var data = ''
-  req.on('data', function (chunk) {
-    data += chunk
-  })
-  req.on('end', function () {
-    var movie = qs.parse(data)
-    movies.update({_id: url.params.id}, movie, function(err, movie) {
-      if (err) throw err
-      res.writeHead(302, {'Location': '/movies'})
-      res.end()
-      })
-    })
-  }
-})
-
-routes.addRoute('/public/*', function (req, res, url) {
-  res.setHeader('Content-Type', mime.lookup(req.url))
-  fs.readFile('.' + req.url, function (err, file) {
-    if (err) {
-      res.setHeader('Content-Type', 'text/html')
-      res.end('404')
-    }
-    res.end(file)
-  })
-})
-// DESTROY
-routes.addRoute('/movies/:id/delete', function(req, res, url) {
-  if (req.method === 'POST') {
-    movies.remove({_id: url.params.id}, function (err, doc) {
-      if (err) throw err
-      res.writeHead(302, {'Location': '/movies'})
-      res.end()
-    })
-  }
-})
+//  siteRoutes
+routes.addRoute('/', siteRoutes.home)
+routes.addRoute('/public/*', siteRoutes.splat)
 
 module.exports = routes
