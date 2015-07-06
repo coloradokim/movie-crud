@@ -8,7 +8,8 @@ body {
 }
 
 body.landing {
-  background-image: url(../../images/amadeus.jpg);
+  background-image: url(/public/amadeus.jpg);
+  background-size: cover;  
 }
 
 nav {
