@@ -5,29 +5,43 @@
   <title>All Movies</title>
   <link rel="stylesheet" href="/public/style.css">
   <link href='http://fonts.googleapis.com/css?family=Dosis:300' rel='stylesheet' type='text/css'><body>
-  <h1>All Movies</h1>
-  <table>
-    <tr>
-      <td>Title</td>
-      <td>Director</td>
-      <td>Year</td>
-      <td>Rating</td>
-      <td></td>
-      <td></td>
-          </tr>
-          <tr>
+    <header>
+      <nav>
+        <h2>Kim's Movie Ratings</h2>
+      </nav>
+    </header>
+<section>
+  <h2>All Movies</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Director</th>
+          <th>Year</th>
+          <th>Rating</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+    <tbody>
       {{#movies}}
-      <td>{{title}}</td>
+    <tr>
+      <td><a href="/movies/{{_id}}">{{title}}</td>
       <td>{{director}}</td>
-      <td>Year</td>
       <td>{{year}}</td>
-      <td>{{myRating}}</td>
-      <td><form action="/movies/{{_id}}/delete" method="post">
-        <input type="submit" value="Delete">
-      </form></td>
-      <td>Edit</td>
-          </tr>
+      <td>{{rating}}</td>
+      <td>
+        <form action="/movies/{{_id}}/delete" method="POST">
+           <input type="submit" value="Delete Movie" class="button">
+        </form>
+      <td>
+        <a href ="/movies/{{_id}}/edit"><button class = 'button'>Edit</button</a>
+        </form>
+      </td>
+    </tr>
+      {{/movies}}
+    </tbody>
   </table>
-  {{/movies}}
+</section>
 </body>
 </html>

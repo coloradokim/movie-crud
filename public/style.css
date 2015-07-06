@@ -1,4 +1,33 @@
+*, *:before, *:after {
+box-sizing: border-box;
+}
+
 body {
   font-family: 'Dosis', sans-serif;
   background-color: lightblue;
+}
+
+.home {
+  background-image: url(images/amadeus.jpg);
+}
+
+nav {
+  background-color: black;
+  color: white;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+  padding: 2%
+}
+
+
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: center;
+  border-top: 1.5px solid black;
 }

@@ -12,7 +12,14 @@
     <h3>Title</h3><input id= "title" type="text" name="title" value = ''>
     <h3>Director</h3><input id= "director" type="text" name="director" value = ''>
     <h3>Year</h3><input id= "year" type="text" name="year" value = ''>
-    <h3>Rating</h3><input id= "rating" type="number" name="rating" value = ''>
+    <label><h3>Rating</h3></label>
+            <select id = "rating" name ="rating" value ="{{myRating}}">
+              <option value = "1">1</option>
+              <option value = "2">2</option>
+              <option value = "3">3</option>
+              <option value = "4">4</option>
+              <option value = "4">5</option>
+            </select>
     <h3>URL</h3><input id= "url" type="text" name="url" value = ''>
 
     <input type="submit" value="Add Movie">
