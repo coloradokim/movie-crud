@@ -1,3 +1,4 @@
+require('dotenv').load()
 var http = require('http'),
     router = require('./router'),
     url = require('url');
@@ -18,7 +19,7 @@ var server = http.createServer(function (req, res) {
   }
 })
 
-server.listen(6060, function (err) {
+server.listen(process.env.PORT || 6060, function (err) {
   if (err) console.log('Doah', err)
   console.log('Woot. A server is running on port 6060')
 })
